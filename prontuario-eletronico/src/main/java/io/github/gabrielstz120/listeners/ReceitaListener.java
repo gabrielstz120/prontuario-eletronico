@@ -11,11 +11,17 @@ import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
 public class ReceitaListener extends ViewListener {
+
     private final ReceitaView receitaView;
 
     public ReceitaListener(ReceitaView receitaView) {
         this.receitaView = receitaView;
         addListener();
+        initListaMedicos();
+    }
+
+    private void initListaMedicos() {
+        receitaView.addListaMedicos(SpringContext.getContext().getBean(ReceitaService.class).getListaMedicos());
     }
 
     @Override

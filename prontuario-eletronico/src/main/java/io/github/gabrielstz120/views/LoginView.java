@@ -7,6 +7,7 @@ package io.github.gabrielstz120.views;
 
 import io.github.gabrielstz120.listeners.LoginListener;
 import io.github.gabrielstz120.models.Usuario;
+import java.awt.event.KeyEvent;
 
 import javax.swing.*;
 
@@ -74,6 +75,11 @@ public class LoginView extends javax.swing.JFrame {
                 jTextField2ActionPerformed(evt);
             }
         });
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField2KeyPressed(evt);
+            }
+        });
 
         jButton1.setText("Conectar");
 
@@ -130,6 +136,12 @@ public class LoginView extends javax.swing.JFrame {
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            jButton1.doClick();
+        }
+    }//GEN-LAST:event_jTextField2KeyPressed
 
     /**
      * @param args the command line arguments

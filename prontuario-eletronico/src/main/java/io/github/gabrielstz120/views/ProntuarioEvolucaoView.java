@@ -27,6 +27,10 @@ public class ProntuarioEvolucaoView extends javax.swing.JFrame {
         new ProtuarioEvolucaoListener(this);
     }
 
+    public void addListaMedicos(List<String> medicos) {
+        medicos.forEach(cbNomeMedico::addItem);
+    }
+
     public List<JButton> getButtonsList() {
         return Arrays.asList(jButton3, jButton4, jButton5);
     }
@@ -63,7 +67,7 @@ public class ProntuarioEvolucaoView extends javax.swing.JFrame {
     }
 
     public Long getCpfPaciente() {
-        return !"".equals(txtNomePaciente.getText()) ? Long.parseLong(txtNomePaciente.getText()) : null;
+        return !"".equals(txtNomePaciente.getText()) ? Long.parseLong(txtCpf.getText()) : null;
     }
 
     /**
@@ -108,7 +112,7 @@ public class ProntuarioEvolucaoView extends javax.swing.JFrame {
 
         ftData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
 
-        cbNomeMedico.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome Médico", " " }));
+        cbNomeMedico.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome Médico" }));
 
         txtNomePaciente.setEditable(false);
         txtNomePaciente.setHorizontalAlignment(javax.swing.JTextField.CENTER);

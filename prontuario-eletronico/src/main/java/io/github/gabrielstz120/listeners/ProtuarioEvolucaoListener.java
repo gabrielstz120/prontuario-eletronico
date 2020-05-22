@@ -12,16 +12,23 @@ import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
 public class ProtuarioEvolucaoListener extends ViewListener {
+
     private final ProntuarioEvolucaoView prontuarioEvolucaoView;
 
     public ProtuarioEvolucaoListener(ProntuarioEvolucaoView prontuarioEvolucaoView) {
         this.prontuarioEvolucaoView = prontuarioEvolucaoView;
         addListener();
+        initListaMedicos();
+    }
+
+    private void initListaMedicos() {
+        prontuarioEvolucaoView.addListaMedicos(SpringContext.getContext().getBean(ReceitaService.class).getListaMedicos());
     }
 
     @Override
     void addListener() {
         prontuarioEvolucaoView.getButtonsList().forEach(bt -> bt.addActionListener(this));
+        prontuarioEvolucaoView.getTxtCpf().addFocusListener(findPacienteByCpf());
     }
 
     @Override
@@ -45,7 +52,7 @@ public class ProtuarioEvolucaoListener extends ViewListener {
             public void focusLost(FocusEvent event) {
                 Long cpfPaciente = prontuarioEvolucaoView.getCpfPaciente();
                 if (cpfPaciente != null) {
-                    Paciente paciente = SpringContext.getContext().getBean(ReceitaService.class).findByCpf(cpfPaciente);
+                    Paciente paciente = SpringContext.getContext().getBean(ProntuarioService.class).findByCpf(cpfPaciente);
                     if (paciente != null) {
                         prontuarioEvolucaoView.setNomePaciente(paciente.getNome());
                     } else {

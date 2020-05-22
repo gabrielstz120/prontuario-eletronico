@@ -7,12 +7,15 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor(onConstructor_ = @Autowired)
 public class ProntuarioService {
 
     private final ProntuarioRepository prontuarioRepository;
     private final PacienteService pacienteService;
+    private final MedicoService medicoService;
 
     public Prontuario saveOrUpdate(Prontuario prontuario) {
         return prontuarioRepository.save(prontuario);
@@ -20,6 +23,10 @@ public class ProntuarioService {
 
     public Paciente findByCpf(Long cpf) {
         return pacienteService.findByCpf(cpf);
+    }
+
+    public List<String> getListaMedicos() {
+        return medicoService.getMedicos();
     }
 
 }
