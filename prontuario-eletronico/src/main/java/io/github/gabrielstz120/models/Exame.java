@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
@@ -17,7 +18,7 @@ public class Exame implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
     @Column(name = "EXAME")
     private String exame;
     @Temporal(TemporalType.DATE)
@@ -25,4 +26,5 @@ public class Exame implements Serializable {
     private Date data;
     @Column(name = "VALOR_EXAME")
     private String valorExame;
+
 }

@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
 
+@Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,7 +17,7 @@ public class Medico implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
     @Column(name = "NOME")
     private String nome;
     @Column(name = "NUMERO_CONSELHO")
@@ -26,10 +27,11 @@ public class Medico implements Serializable {
     @Column(name = "STATUS", columnDefinition = "boolean")
     private Boolean status;
     @Column(name = "CELULAR")
-    private Long celular;
+    private String celular;
     @Column(name = "TEL_COMERCIAL")
-    private Long telComercial;
+    private String telComercial;
     @Column(name = "EMAIL")
     private String email;
+
 }
 

@@ -28,4 +28,8 @@ public class UsuarioService {
         return false;
     }
 
+    public boolean salvar(Usuario usuario) {
+        return usuarioRepository.save(usuario).getId() != null;
+    }
+
 }

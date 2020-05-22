@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
@@ -17,7 +18,7 @@ public class Prontuario implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
     @Temporal(TemporalType.DATE)
     @Column(name = "DATA", columnDefinition = "date")
     private Date data;
@@ -33,4 +34,5 @@ public class Prontuario implements Serializable {
     private Boolean situacao;
     @Column(name = "LOCALIZACAO")
     private String localizacao;
+
 }

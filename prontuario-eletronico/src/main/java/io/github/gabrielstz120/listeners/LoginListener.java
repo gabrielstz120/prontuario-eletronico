@@ -8,9 +8,8 @@ import io.github.gabrielstz120.views.MainMenuView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public final class LoginListener implements ActionListener {
+public final class LoginListener extends ViewListener {
 
     private final LoginView loginView;
     private final UsuarioService usuarioService;
@@ -21,7 +20,8 @@ public final class LoginListener implements ActionListener {
         usuarioService = SpringContext.getContext().getBean(UsuarioService.class);
     }
 
-    private void addListener() {
+    @Override
+    void addListener() {
         loginView.getConectarButton().addActionListener(this);
     }
 
